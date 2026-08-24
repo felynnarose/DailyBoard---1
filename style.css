@@ -1,0 +1,621 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    padding: clamp(12px, 2vw, 35px);
+    padding-top: clamp(8px, 1vh, 15px);
+
+    font-family: Arial, sans-serif;
+
+    background: #f3f0f6;
+    color: #363238;
+
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+    min-height: clamp(50px, 8vh, 75px);
+
+    color: #363238;
+    font-family: "Brush Script MT", cursive;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid #b8adbf;
+
+    position: relative;
+}
+
+#toggle-tema {
+    width: clamp(26px, 3vw, 32px);
+    height: clamp(26px, 3vw, 32px);
+
+    position: absolute;
+    right: clamp(5px, 2vw, 25px);
+    bottom: clamp(5px, 1vh, 12px);
+
+    display: flex;
+    align-items: center;
+
+    background: none;
+    border: none;
+    padding: 0;
+
+    cursor: pointer;
+    outline: none;
+
+    background-image: url("assets/moon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+button {
+    padding: 8px 14px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    background-color: #e5dfe8;
+    color: #363238;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+button:hover {
+    background-color: #dcd3e0;
+}
+
+#welcome {
+    min-height: clamp(45px, 7vh, 65px);
+
+    margin: 0;
+
+    font-family: monospace;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard {
+    width: min(100%, 1250px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: clamp(15px, 2vw, 30px);
+
+    align-items: start;
+}
+
+.kolom-kiri,
+.kolom-kanan {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: clamp(15px, 2vw, 25px);
+}
+
+section {
+    width: 100%;
+
+    margin: 0;
+    padding: clamp(12px, 1.5vw, 18px);
+
+    border: 1px solid #b8adbf;
+    border-radius: 8px;
+
+    background: rgba(250, 248, 252, 0.88);
+
+    overflow-wrap: break-word;
+}
+
+.section-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.kutip {
+    color: #766e78;
+
+    font-style: italic;
+    text-align: center;
+
+    margin: 5px;
+    margin-bottom: 20px;
+
+    padding-bottom: 20px;
+
+    border-bottom: 1px solid #c9c1ce;
+}
+
+#kutipan-harian::before {
+    content: "“";
+}
+
+#kutipan-harian::after {
+    content: "”";
+}
+
+#author::before {
+    content: "~ ";
+}
+
+#info-cuaca {
+    width: 100%;
+
+    margin-top: 18px;
+    padding: 10px 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+#info-cuaca > strong {
+    font-size: 1.05rem;
+    font-weight: bold;
+
+    text-align: left;
+}
+
+.weather-details {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 3px;
+
+    text-align: right;
+}
+
+.weather-details span {
+    font-size: 1.15rem;
+    font-weight: bold;
+}
+
+.weather-details small {
+    color: #766e78;
+    font-size: 0.9rem;
+}
+
+.inputbox {
+    width: min(65%, 300px);
+
+    margin-right: 10px;
+    padding: 5px;
+
+    outline: none;
+
+    border: none;
+    border-bottom: 1px solid #c9c1ce;
+
+    background: transparent;
+    color: #363238;
+}
+
+.inputbox:focus {
+    border-bottom-color: #8d7a99;
+}
+
+#cari-tugas {
+    width: min(70%, 350px);
+
+    margin-bottom: 15px;
+
+    padding: 8px 4px;
+
+    border: none;
+    border-bottom: 1px solid #c9c1ce;
+
+    outline: none;
+
+    background: transparent;
+    color: #363238;
+}
+
+#cari-tugas:focus {
+    border-bottom-color: #8d7a99;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #918894;
+}
+
+#tambah {
+    width: 16px;
+    height: 16px;
+
+    position: relative;
+    top: 4px;
+
+    padding: 0;
+
+    background: none;
+
+    border: none;
+
+    cursor: pointer;
+    outline: none;
+
+    background-image: url("assets/plus.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    text-indent: -9999px;
+    overflow: hidden;
+}
+
+#daftar-tugas {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    padding: 0;
+
+    margin-top: 15px;
+    margin-bottom: 0;
+
+    list-style: none;
+}
+
+#daftar-tugas li {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+    padding: 10px 12px;
+
+    border: 1px solid #ddd6e1;
+    border-radius: 8px;
+
+    background-color: #faf8fc;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+#daftar-tugas li:hover {
+    border-color: #c9bed0;
+}
+
+#daftar-tugas li span {
+    min-width: 0;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+#daftar-tugas li input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+
+    accent-color: #8d7a99;
+
+    cursor: pointer;
+}
+
+#daftar-tugas button {
+    flex-shrink: 0;
+
+    margin-left: auto;
+}
+
+.catatanSection {
+    width: 100%;
+
+    position: static;
+}
+
+.catatanIn {
+    width: min(65%, 300px);
+
+    min-height: 20px;
+
+    margin-right: 10px;
+    padding: 5px;
+
+    outline: none;
+
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+
+    border: none;
+    border-bottom: 1px solid #c9c1ce;
+
+    background: transparent;
+    color: #363238;
+
+    resize: vertical;
+}
+
+.catatanIn:focus {
+    border-bottom-color: #8d7a99;
+}
+
+#daftar-catatan {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: clamp(10px, 1.5vw, 16px);
+
+    margin-top: 15px;
+}
+
+.catatan-item {
+    width: 100%;
+    max-width: 160px;
+
+    min-height: clamp(120px, 16vw, 150px);
+
+    padding: clamp(10px, 1.2vw, 16px);
+
+    overflow-wrap: break-word;
+
+    background: #faf8fc;
+
+    border: 1px solid #ddd6e1;
+    border-radius: 8px;
+
+    box-shadow:
+        2px 3px 8px rgba(70, 55, 80, 0.10);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.catatan-item p {
+    margin: 0;
+
+    flex: 1;
+
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+.catatan-item small {
+    margin-top: 12px;
+
+    color: #766e78;
+}
+
+.catatan-item button {
+    align-self: flex-end;
+
+    margin-top: 8px;
+}
+
+#status {
+    margin: 0;
+
+    border: 0;
+
+    text-align: center;
+
+    color: #766e78;
+}
+
+footer {
+    text-align: center;
+}
+
+.dark-mode {
+    background-color: #252128;
+    color: #eeeaf0;
+
+    header {
+        color: #eeeaf0;
+        border-bottom-color: #625868;
+    }
+
+    #toggle-tema {
+        background-image: url("assets/daylight.png");
+    }
+
+    section {
+        background: rgba(43, 37, 47, 0.95);
+        color: #eeeaf0;
+        border-color: #625868;
+    }
+
+    .kutip {
+        color: #c8c0cb;
+        border-bottom-color: #625868;
+    }
+
+    input,
+    textarea {
+        background-color: transparent;
+        color: #eeeaf0;
+        border-color: #625868;
+    }
+
+    input:focus,
+    textarea:focus {
+        border-color: #8d7a99;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #99919d;
+    }
+
+    #tambah {
+        background-image: url("assets/pluswhite.png");
+    }
+
+    button {
+        background-color: #403844;
+        color: #eeeaf0;
+        border-color: #625868;
+    }
+
+    button:hover {
+        background-color: #4d4452;
+    }
+
+    #info-cuaca .weather-details small {
+        color: #aaa2ae;
+    }
+
+    #daftar-tugas li {
+        background-color: #302a34;
+        border-color: #514955;
+        color: #eeeaf0;
+    }
+
+    #daftar-tugas li:hover {
+        border-color: #6a5e6d;
+    }
+
+    #daftar-tugas li input[type="checkbox"] {
+        accent-color: #aa98b4;
+    }
+
+    .catatan-item {
+        background: #302a34;
+        border-color: #514955;
+        box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .catatan-item small {
+        color: #aaa2ae;
+    }
+
+    #status {
+        color: #aaa2ae;
+    }
+}
+
+@media (max-width: 800px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        width: min(100%, 700px);
+    }
+
+    .kolom-kiri,
+    .kolom-kanan {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    body {
+        padding: 8px;
+    }
+
+    header {
+        min-height: 48px;
+    }
+
+    #welcome {
+        min-height: 45px;
+    }
+
+    .dashboard {
+        gap: 15px;
+    }
+
+    section {
+        padding: 12px;
+    }
+
+    #info-cuaca {
+        gap: 8px;
+    }
+
+    #info-cuaca > strong {
+        font-size: 1rem;
+    }
+
+    .weather-details span {
+        font-size: 1.05rem;
+    }
+
+    .weather-details small {
+        font-size: 0.85rem;
+    }
+
+    #daftar-catatan {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .catatan-item {
+        max-width: none;
+        min-height: 120px;
+        padding: 10px;
+    }
+
+    .inputbox,
+    .catatanIn {
+        width: min(70%, 300px);
+    }
+
+    #cari-tugas {
+        width: 80%;
+    }
+}
+
+@media (max-width: 350px) {
+    #info-cuaca {
+        align-items: flex-start;
+    }
+
+    #info-cuaca > strong {
+        max-width: 50%;
+        overflow-wrap: anywhere;
+    }
+
+    .weather-details {
+        max-width: 45%;
+    }
+
+    #daftar-catatan {
+        grid-template-columns: 1fr;
+    }
+}
